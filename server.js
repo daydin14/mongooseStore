@@ -6,7 +6,7 @@ const PORT = process.env.PORT;
 app.use(express.urlencoded({ extended: false }));
 
 const mongoose = require("mongoose");
-const Product = require("./models/products");
+const Product = require("./models/product");
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
