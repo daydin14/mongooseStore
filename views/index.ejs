@@ -1,0 +1,9 @@
+%- include("./partials/head.ejs") %>
+<nav><a href="/products/new">Add New Product</a></nav>
+<h1>Products</h1>
+<ul>
+  <% products.forEach(product => { %>
+  <li><a href="/products/<%=product._id;%>"><%=product.name%></a></li>
+  <% }) %>
+</ul>
+<%- include("./partials/footer.ejs") %>
