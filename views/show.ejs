@@ -1,0 +1,8 @@
+<%- include("./partials/head.ejs") %>
+<a href="/products">Back to Index Page</a>
+<h1><%=product.name%></h1>
+<p>Description: <%=product.description%></p>
+<img src="<%=product.img%>" width="300px" height="auto" />
+<h3>Price: <%=product.price%></h3>
+<p>Quantity: <%=product.qty%></p>
+<%- include("./partials/footer.ejs") %>

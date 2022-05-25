@@ -25,7 +25,7 @@ app.post("/products", (req, res) => {
 });
 // New
 app.get("/products/new", (req, res) => {
-  res.redirect("/products");
+  res.render("new.ejs");
 });
 // Index
 app.get("/products", (req, res) => {
