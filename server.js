@@ -16,6 +16,14 @@ db.on("error", (err) => console.log(err.message + " is mongo not running?"));
 db.on("connected", () => console.log("mongo connected"));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
+// Seed
+const productSeed = require("./models/seed");
+app.get("/products/seed", (req, res) => {
+  Product.create(productSeed),
+    (error, createdProductSeed) => {
+      res.redirect("/products");
+    };
+});
 // Create
 app.post("/products", (req, res) => {
   Product.create(req.body),
