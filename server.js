@@ -17,11 +17,12 @@ db.on("connected", () => console.log("mongo connected"));
 db.on("disconnected", () => console.log("mongo disconnected"));
 
 // Create
-app.post("/products", (req,res) => {
-    Product.create(req.body) (error, createdProduct) => {
-        res.redirect("/products");
-    }
-})
+app.post("/products", (req, res) => {
+  Product.create(req.body),
+    (error, createdProduct) => {
+      res.redirect("/products");
+    };
+});
 
 // Index
 app.get("/products", (req, res) => {
