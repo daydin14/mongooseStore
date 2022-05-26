@@ -1,3 +1,11 @@
 <%- include("./partials/head.ejs") %>
-<h1>Edit Page</h1>
+<a href="/products">Back to Index Page</a>
+<form action="/products/<%=product._id%>?_method=PUT" method="POST">
+  <input type="text" name="name" value="<%product.name%>" />
+  <input type="text" name="description" value="<%product.description%>" />
+  <input type="text" name="img" value="<%product.img%>" />
+  <input type="number" name="price" value="<%product.price%>" />
+  <input type="number" name="qty" value="<%product.qty%>" />
+  <input type="submit" value="update" />
+</form>
 <%- include("./partials/footer.ejs") %>
