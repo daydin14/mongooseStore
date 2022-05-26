@@ -49,6 +49,12 @@ app.get("/products/:id", (req, res) => {
     });
   });
 });
+// Edit
+app.get("/products/:id/edit", (req, res) => {
+  Product.findById(req.params.id, (error, foundProduct) => {
+    res.render("edit.ejs");
+  });
+});
 // Update
 app.put("/products/:id", (req, res) => {
   Product.findByIdAndUpdate(
@@ -62,7 +68,13 @@ app.put("/products/:id", (req, res) => {
     }
   );
 });
-// Edit
+// Delete
+app.delete("/products/:id", (req, res) => {
+  Product.findByIdAndDelete(req.params.id, (err, data) => {
+    res.redirect("/products");
+  });
+});
+// Buying a product - Quantity remaining
 app.post("/products/:id/buy", (req, res) => {
   Product.findById(req.params.id, (error, data) => {
     if (data.qty === 0) {
@@ -72,12 +84,6 @@ app.post("/products/:id/buy", (req, res) => {
       data.save();
     }
     res.redirect("/products/");
-  });
-});
-// Delete
-app.delete("/products/:id", (req, res) => {
-  Product.findByIdAndDelete(req.params.id, (err, data) => {
-    res.redirect("/products");
   });
 });
 app.listen(PORT);

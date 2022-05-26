@@ -3,7 +3,18 @@
 <h1>Products</h1>
 <ul>
   <% product.forEach(product => { %>
-  <li><a href="/products/<%=product._id;%>"><%=product.name%></a></li>
+  <li>
+    <a href="/products/<%=product._id%>"><%=product.name%></a>
+    <a href="/products/<%=product._id%>/edit"><button>Edit</button></a>
+    <form
+      action="/products/<%=product._id%>?_method=DELETE"
+      method="POST"
+      style="display: inline"
+    >
+      <input type="submit" value="DELETE" />
+    </form>
+  </li>
+
   <% }) %>
 </ul>
 <%- include("./partials/footer.ejs") %>
