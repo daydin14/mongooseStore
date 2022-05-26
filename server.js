@@ -75,4 +75,9 @@ app.post("/products/:id/buy", (req, res) => {
   });
 });
 // Delete
+app.delete("/products/:id", (req, res) => {
+  Product.findByIdAndDelete(req.params.id, (err, data) => {
+    res.redirect("/products");
+  });
+});
 app.listen(PORT);
