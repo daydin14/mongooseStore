@@ -49,4 +49,30 @@ app.get("/products/:id", (req, res) => {
     });
   });
 });
+// Update
+app.put("/products/:id", (req, res) => {
+  Product.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    },
+    (error, updatedProdcut) => {
+      res.redirect(`/products/${req.params.id}`);
+    }
+  );
+});
+// Edit
+app.post("/products/:id/buy", (req, res) => {
+  Product.findById(req.params.id, (error, data) => {
+    if (data.qty === 0) {
+      data.qty = "OUT OF STOCK";
+    } else {
+      data.qty--;
+      data.save();
+    }
+    res.redirect("/products/");
+  });
+});
+// Delete
 app.listen(PORT);
