@@ -80,7 +80,7 @@ app.delete("/products/:id", (req, res) => {
 app.post("/products/:id/buy", (req, res) => {
   Product.findById(req.params.id, (error, data) => {
     if (data.qty === 0) {
-      data.qty = "OUT OF STOCK";
+      // data.qty = "OUT OF STOCK";
     } else {
       data.qty--;
       data.save();
