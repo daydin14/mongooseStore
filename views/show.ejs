@@ -4,5 +4,14 @@
 <p>Description: <%=product.description%></p>
 <img src="<%=product.img%>" width="300px" height="auto" />
 <h3>Price: <%=product.price%></h3>
-<p>Quantity: <%=product.qty%></p>
+<p>
+    <% if (product.qty > 0) { %> 
+        Quantity: <%=product.qty%>
+        <form action="/products/<%=product._id%>/buy" method="POST">
+            <input type="submit" value="Buy" />
+        </form>
+    <% } else { %> 
+        OUT OF STOCK 
+        <% } %> 
+</p>
 <%- include("./partials/footer.ejs") %>
