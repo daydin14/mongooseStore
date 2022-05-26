@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
+const methodOverride = require("method-override");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 
 const mongoose = require("mongoose");
 const Product = require("./models/product");
@@ -52,7 +54,7 @@ app.get("/products/:id", (req, res) => {
 // Edit
 app.get("/products/:id/edit", (req, res) => {
   Product.findById(req.params.id, (error, foundProduct) => {
-    res.render("edit.ejs");
+    res.render("edit.ejs", { product: foundProduct });
   });
 });
 // Update
