@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+app.use(express.static("public"));
 
 const mongoose = require("mongoose");
 const Product = require("./models/product");
@@ -85,7 +86,7 @@ app.post("/products/:id/buy", (req, res) => {
       data.qty--;
       data.save();
     }
-    res.redirect("/products/");
+    res.redirect("/products");
   });
 });
 app.listen(PORT);
